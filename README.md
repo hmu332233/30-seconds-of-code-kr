@@ -2034,7 +2034,7 @@ pullBy(myArray, [{ x: 1 }, { x: 3 }], o => o.x); // myArray = [{ x: 2 }]
 
 Filter an array of objects based on a condition while also filtering out unspecified keys.
 
-Use `Array.filter()` to filter the array based on the predicate `fn` so that it returns the objects for which the condition returned a truthy value. 
+Use `Array.filter()` to filter the array based on the predicate `fn` so that it returns the objects for which the condition returned a truthy value.
 On the filtered array, use `Array.map()` to return the new object using `Array.reduce()` to filter out the keys which were not supplied as the `keys` argument.
 
 ```js
@@ -2377,10 +2377,10 @@ sortedLastIndexBy([{ x: 4 }, { x: 5 }], { x: 4 }, o => o.x); // 1
 
 ### stableSort ![advanced](/advanced.svg)
 
-Performs stable sorting of an array, preserving the initial indexes of items when their values are the same. 
+Performs stable sorting of an array, preserving the initial indexes of items when their values are the same.
 Does not mutate the original array, but returns a new array instead.
 
-Use `Array.map()` to pair each element of the input array with its corresponding index. 
+Use `Array.map()` to pair each element of the input array with its corresponding index.
 Use `Array.sort()` and a `compare` function to sort the list, preserving their initial order if the items compared are equal.
 Use `Array.map()` to convert back to the initial array items.
 
@@ -2906,9 +2906,9 @@ zipWith(
 
 ### arrayToHtmlList
 
-Converts the given array elements into `<li>` tags and appends them to the list of the given id.
+주어진 array elements를 `<li>` 태그로 변환하고 id를 가진 리스트에 추가합니다.
 
-Use `Array.map()` and `document.querySelector()` to create a list of html tags.
+html tag의 리스트를 만들기 위해 `Array.map()`과 `document.querySelector()`를 사용합니다.
 
 ```js
 const arrayToHtmlList = (arr, listID) =>
@@ -2929,9 +2929,9 @@ arrayToHtmlList(['item 1', 'item 2'], 'myListID');
 
 ### bottomVisible
 
-Returns `true` if the bottom of the page is visible, `false` otherwise.
+화면의 하단이 보이면 `true`를 리턴하고 그렇지 않다면 `false`를 리턴합니다.
 
-Use `scrollY`, `scrollHeight` and `clientHeight` to determine if the bottom of the page is visible.
+화면의 바닥이 보이는지 결정하기 위해 `scrollY`와 `scrollHeight`, `clientHeight`를 사용합니다.
 
 ```js
 const bottomVisible = () =>
@@ -2953,14 +2953,14 @@ bottomVisible(); // true
 
 ### copyToClipboard ![advanced](/advanced.svg)
 
-Copy a string to the clipboard. Only works as a result of user action (i.e. inside a `click` event listener).
+클립보드에 문자열을 복사합니다.  
+click listener와 같이 사용자의 액션으로만 동작합니다.
 
-Create a new `<textarea>` element, fill it with the supplied data and add it to the HTML document.
-Use `Selection.getRangeAt()`to store the selected range (if any).
-Use `document.execCommand('copy')` to copy to the clipboard.
-Remove the `<textarea>` element from the HTML document.
-Finally, use `Selection().addRange()` to recover the original selected range (if any).
-
+새로운 `<textarea>` element를 만들고 제공받은 데이터를 체워넣습니다. 그리고 이것을 HTML document에 추가합니다.  
+(선택한 범위가 있는 경우) `Selection.getRangeAt()`를 사용해서 선택한 범위를 저장합니다.  
+`document.execCommand('copy')`를 사용해 클립보드에 복사합니다.  
+HTML document로부터 `<textarea>`를 제거합니다.  
+(선택한 범위가 있는 경우) 마지막으로, `Selection().addRange()`를 사용해서 원래 선택한 범위를 복구합니다.  
 ```js
 const copyToClipboard = str => {
   const el = document.createElement('textarea');
@@ -2995,11 +2995,11 @@ copyToClipboard('Lorem ipsum'); // 'Lorem ipsum' copied to clipboard.
 
 ### createElement
 
-Creates an element from a string (without appending it to the document). 
+Creates an element from a string (without appending it to the document).
 If the given string contains multiple elements, only the first one will be returned.
 
 Use `document.createElement()` to create a new element.
-Set its `innerHTML` to the string supplied as the argument. 
+Set its `innerHTML` to the string supplied as the argument.
 Use `ParentNode.firstElementChild` to return the element version of the string.
 
 ```js
@@ -3083,9 +3083,9 @@ hub.off('message', handler);
 
 ### currentURL
 
-Returns the current URL.
+현재 URL을 리턴합니다.
 
-Use `window.location.href` to get current URL.
+현재 URL을 얻기 위해 `window.location.href`를 사용합니다.
 
 ```js
 const currentURL = () => window.location.href;
@@ -3105,9 +3105,9 @@ currentURL(); // 'https://google.com'
 
 ### detectDeviceType
 
-Detects wether the website is being opened in a mobile device or a desktop/laptop.
+웹사이트가 모바일 디바이스 또는 데스크탑/랩탑에서 열렸는지 감지합니다.
 
-Use a regular expression to test the `navigator.userAgent` property to figure out if the device is a mobile device or a desktop/laptop.
+`navigator.userAgent`를 정규표현식으로 테스트하여 디바이스가 모바일인지 데스크탑/랩탑인지 알아냅니다.
 
 ```js
 const detectDeviceType = () =>
@@ -3130,12 +3130,11 @@ detectDeviceType(); // "Mobile" or "Desktop"
 
 ### elementIsVisibleInViewport
 
-Returns `true` if the element specified is visible in the viewport, `false` otherwise.
+특정 엘리먼트가 viewport 안에 보인다면 `true`를 리턴하고 그렇지않다면 `false`를 리턴합니다.
 
-Use `Element.getBoundingClientRect()` and the `window.inner(Width|Height)` values
-to determine if a given element is visible in the viewport.
-Omit the second argument to determine if the element is entirely visible, or specify `true` to determine if
-it is partially visible.
+viewport 안에 주어진 엘리먼트가 보이는지 결정하기 위해서   `Element.getBoundingClientRect()`와 `window.inner(Width|Height)`의 값을 사용합니다.  
+두번째 인자는 엘리먼트가 전체적으로 보이는 것을 결정한다면 생략합니다.  
+`true`를 지정하면 엘리먼트가 부분적으로 보이는 것을 결정한다.  
 
 ```js
 const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
@@ -3164,10 +3163,11 @@ elementIsVisibleInViewport(el, true); // true - (partially visible)
 
 ### getScrollPosition
 
-Returns the scroll position of the current page.
+현재 페이지의 스크롤 위치를 리턴합니다.  
 
-Use `pageXOffset` and `pageYOffset` if they are defined, otherwise `scrollLeft` and `scrollTop`.
-You can omit `el` to use a default value of `window`.
+`pageXOffset` and `pageYOffset`가 정의되어있다면 이것을 사용하고  
+그렇지 않으면 `scrollLeft` and `scrollTop`을 사용합니다.  
+`window`의 값을 사용한다면 `el` 파라미터는 생략할 수 있습니다.  
 
 ```js
 const getScrollPosition = (el = window) => ({
@@ -3190,9 +3190,9 @@ getScrollPosition(); // {x: 0, y: 200}
 
 ### getStyle
 
-Returns the value of a CSS rule for the specified element.
+특정 엘리먼트의 css 값을 리턴합니다.
 
-Use `Window.getComputedStyle()` to get the value of the CSS rule for the specified element.
+특정 엘리먼트의 css 값을 가져오기 위해 `Window.getComputedStyle()`을 사용합니다.
 
 ```js
 const getStyle = (el, ruleName) => getComputedStyle(el)[ruleName];
@@ -3212,9 +3212,9 @@ getStyle(document.querySelector('p'), 'font-size'); // '16px'
 
 ### hasClass
 
-Returns `true` if the element has the specified class, `false` otherwise.
+엘리먼트가 특정 클래스를 가지고 있다면 `true`를, 그렇지 않다면 `false`를 리턴합니다.
 
-Use `element.classList.contains()` to check if the element has the specified class.
+엘리먼트가 특정 클래스를 가지고 있는지 체크하기 위해서 `element.classList.contains()`를 사용합니다.
 
 ```js
 const hasClass = (el, className) => el.classList.contains(className);
@@ -3234,9 +3234,10 @@ hasClass(document.querySelector('p.special'), 'special'); // true
 
 ### hashBrowser ![advanced](/advanced.svg)
 
-Creates a hash for a value using the [SHA-256](https://en.wikipedia.org/wiki/SHA-2) algorithm. Returns a promise.
+[SHA-256](https://en.wikipedia.org/wiki/SHA-2) 알고리즘을 사용한 hash 값을 만들어주며  
+`promise`가 리턴됩니다.
 
-Use the [SubtleCrypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) API to create a hash for the given value.
+주어진 값을 hash로 만들기 위해서   [SubtleCrypto](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto) API를 사용합니다.
 
 ```js
 const hashBrowser = val =>
@@ -3309,11 +3310,13 @@ httpsRedirect(); // If you are on http://mydomain.com, you are redirected to htt
 
 ### observeMutations ![advanced](/advanced.svg)
 
-Returns a new MutationObserver and runs the provided callback for each mutation on the specified element.
+새로운 `MutationObserver`를 리턴하고 지정된 요소의 각 변형에 대해 callback을 실행합니다.
 
-Use a [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver) to observe mutations on the given element.
+엘리먼트의 변화를 관찰하기 위해서 [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)를 사용합니다.
 Use `Array.forEach()` to run the callback for each mutation that is observed.
-Omit the third argument, `options`, to use the default [options](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver#MutationObserverInit) (all `true`).
+관찰된 각 변화에 대해 콜백을 실행하기 위해서 `Array.forEach()`를 사용하며,  
+세번째 인자인 `options`은 생략 가능합니다.
+디폴트 [options](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver#MutationObserverInit)은 모두 `true`입니다.
 
 ```js
 const observeMutations = (element, callback, options) => {
@@ -3353,7 +3356,7 @@ obs.disconnect(); // Disconnects the observer and stops logging mutations on the
 
 Removes an event listener from an element.
 
-Use `EventTarget.removeEventListener()` to remove an event listener from an element. 
+Use `EventTarget.removeEventListener()` to remove an event listener from an element.
 Omit the fourth argument `opts` to use `false` or specify it based on the options used when the event listener was added.
 
 ```js
@@ -3409,7 +3412,7 @@ on(document.body, 'click', fn, { options: true }); // use capturing instead of b
 
 Run the callback whenever the user input type changes (`mouse` or `touch`). Useful for enabling/disabling code depending on the input device. This process is dynamic and works with hybrid devices (e.g. touchscreen laptops).
 
-Use two event listeners. Assume `mouse` input initially and bind a `touchstart` event listener to the document. 
+Use two event listeners. Assume `mouse` input initially and bind a `touchstart` event listener to the document.
 On `touchstart`, add a `mousemove` event listener to listen for two consecutive `mousemove` events firing within 20ms, using `performance.now()`.
 Run the callback with the input type as an argument in either of these situations.
 
@@ -3448,7 +3451,7 @@ onUserInputChange(type => {
 
 Returns the prefixed version (if necessary) of a CSS property that the browser supports.
 
-Use `Array.findIndex()` on an array of vendor prefix strings to test if `document.body` has one of them defined in its `CSSStyleDeclaration` object, otherwise return `null`. 
+Use `Array.findIndex()` on an array of vendor prefix strings to test if `document.body` has one of them defined in its `CSSStyleDeclaration` object, otherwise return `null`.
 Use `String.charAt()` and `String.toUpperCase()` to capitalize the property, which will be appended to the vendor prefix string.
 
 ```js
@@ -3478,9 +3481,9 @@ prefix('appearance'); // 'appearance' on a supported browser, otherwise 'webkitA
 
 Invokes the provided callback on each animation frame.
 
-Use recursion. 
-Provided that `running` is `true`, continue invoking `window.requestAnimationFrame()` which invokes the provided callback. 
-Return an object with two methods `start` and `stop` to allow manual control of the recording. 
+Use recursion.
+Provided that `running` is `true`, continue invoking `window.requestAnimationFrame()` which invokes the provided callback.
+Return an object with two methods `start` and `stop` to allow manual control of the recording.
 Omit the second argument, `autoStart`, to implicitly call `start` when the function is invoked.
 
 ```js
@@ -3680,7 +3683,7 @@ show(...document.querySelectorAll('img')); // Shows all <img> elements on the pa
 
 Smoothly scrolls the element on which it's called into the visible area of the browser window.
 
-Use `.scrollIntoView` method to scroll the element. 
+Use `.scrollIntoView` method to scroll the element.
 Pass `{ behavior: 'smooth' }` to `.scrollIntoView` so it scrolls smoothly.
 
 ```js
@@ -4777,7 +4780,7 @@ The array should be ordered from best performer to worst performer (winner -> lo
 
 Use the exponent `**` operator and math operators to compute the expected score (chance of winning).
 of each opponent and compute the new rating for each.
-Loop through the ratings, using each permutation to compute the post-Elo rating for each player in a pairwise fashion. 
+Loop through the ratings, using each permutation to compute the post-Elo rating for each player in a pairwise fashion.
 Omit the second argument to use the default `kFactor` of 32.
 
 ```js
@@ -6376,9 +6379,9 @@ merge(object, other); // { a: [ { x: 2 }, { y: 4 }, { z: 3 } ], b: [ 1, 2, 3 ], 
 Given a flat array of objects linked to one another, it will nest them recursively.
 Useful for nesting comments, such as the ones on reddit.com.
 
-Use recursion. 
-Use `Array.filter()` to filter the items where the `id` matches the `link`, then `Array.map()` to map each one to a new object that has a `children` property which recursively nests the items based on which ones are children of the current item. 
-Omit the second argument, `id`, to default to `null` which indicates the object is not linked to another one (i.e. it is a top level object). 
+Use recursion.
+Use `Array.filter()` to filter the items where the `id` matches the `link`, then `Array.map()` to map each one to a new object that has a `children` property which recursively nests the items based on which ones are children of the current item.
+Omit the second argument, `id`, to default to `null` which indicates the object is not linked to another one (i.e. it is a top level object).
 Omit the third argument, `link`, to use `'parent_id'` as the default property which links the object to another one by its `id`.
 
 ```js
@@ -6615,7 +6618,7 @@ const b = shallowClone(a); // a !== b
 
 Get size of arrays, objects or strings.
 
-Get type of `val` (`array`, `object` or `string`). 
+Get type of `val` (`array`, `object` or `string`).
 Use `length` property for arrays.
 Use `length` or `size` value if available or number of keys for objects.
 Use `size` of a [`Blob` object](https://developer.mozilla.org/en-US/docs/Web/API/Blob) created from `val` for strings.
@@ -7734,7 +7737,7 @@ isNumber(1); // true
 
 Returns a boolean determining if the passed value is an object or not.
 
-Uses the  `Object` constructor to create an object wrapper for the given value. 
+Uses the  `Object` constructor to create an object wrapper for the given value.
 If the value is `null` or `undefined`, create and return an empty object. Οtherwise, return an object of a type that corresponds to the given value.
 
 ```js
@@ -8182,7 +8185,7 @@ const httpGet = (url, callback, err = console.error) => {
 httpGet(
   'https://jsonplaceholder.typicode.com/posts/1',
   console.log
-); /* 
+); /*
 Logs: {
   "userId": 1,
   "id": 1,
@@ -8262,8 +8265,8 @@ Logs: {
 
 Determines if the current runtime environment is a browser so that front-end modules can run on the server (Node) without throwing errors.
 
-Use `Array.includes()` on the `typeof` values of both `window` and `document` (globals usually only available in a browser environment unless they were explicitly defined), which will return `true` if one of them is `undefined`. 
-`typeof` allows globals to be checked for existence without throwing a `ReferenceError`. 
+Use `Array.includes()` on the `typeof` values of both `window` and `document` (globals usually only available in a browser environment unless they were explicitly defined), which will return `true` if one of them is `undefined`.
+`typeof` allows globals to be checked for existence without throwing a `ReferenceError`.
 If both of them are not `undefined`, then the current environment is assumed to be a browser.
 
 ```js
@@ -8288,7 +8291,7 @@ isBrowser(); // false (Node)
 Returns the index of the function in an array of functions which executed the fastest.
 
 Use `Array.map()` to generate an array where each value is the total time taken to execute the function after `iterations` times. Use the difference in `performance.now()` values before and after to get the total time in milliseconds to a high degree of accuracy.
-Use `Math.min()` to find the minimum execution time, and return the index of that shortest time which corresponds to the index of the most performant function. 
+Use `Math.min()` to find the minimum execution time, and return the index of that shortest time which corresponds to the index of the most performant function.
 Omit the second argument, `iterations`, to use a default of 10,000 iterations. The more iterations, the more reliable the result but the longer it will take.
 
 ```js
@@ -8651,4 +8654,3 @@ yesNo('Foo', true); // true
 ## Credits
 
 *Icons made by [Smashicons](https://www.flaticon.com/authors/smashicons) from [www.flaticon.com](https://www.flaticon.com/) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/).*
-
