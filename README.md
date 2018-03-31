@@ -8354,11 +8354,11 @@ last(1, 2, 3, 4, 5); // 5
 
 ### parseCookie
 
-Parse an HTTP Cookie header string and return an object of all cookie name-value pairs.
+HTTP Cookie header string 파싱하고 이름-값 쌍의 object로 리턴한다.
 
-Use `String.split(';')` to separate key-value pairs from each other.
-Use `Array.map()` and `String.split('=')` to separate keys from values in each pair.
-Use `Array.reduce()` and `decodeURIComponent()` to create an object with all key-value pairs.
+`String.split(';')`는 각각을 키-값으로 분리하기 위해 사용한다.  
+`Array.map()` 과 `String.split('=')`은 각 쌍의 값과 키를 분리하기 위해 사용한다.  
+`Array.reduce()` 과 `decodeURIComponent()`은 모든 키-값 쌍의 object로 만들기 위해 사용한다.
 
 ```js
 const parseCookie = str =>
@@ -8385,13 +8385,13 @@ parseCookie('foo=bar; equation=E%3Dmc%5E2'); // { foo: 'bar', equation: 'E=mc^2'
 
 ### prettyBytes
 
-Converts a number in bytes to a human-readable string.
+바이트의 수를 사람이 읽기 좋은 문자로 변환한다.
 
-Use an array dictionary of units to be accessed based on the exponent.
-Use `Number.toPrecision()` to truncate the number to a certain number of digits.
-Return the prettified string by building it up, taking into account the supplied options and whether it is negative or not.
-Omit the second argument, `precision`, to use a default precision of `3` digits.
-Omit the third argument, `addSpace`, to add space between the number and unit by default.
+지수에 따라 엑세스할 단위의 배열 딕셔너리를 사용한다.  
+`Number.toPrecision()`은 숫자를 특정 자리수로 자르기 위해 사용한다.  
+제공된 옵션과 음수여부를 고려하여 변환된 문자열을 리턴한다.  
+default precision인 3을 사용한다면 두번째 인자인 `precision`을 생략할 수 있다.  
+숫자와 단위 사이에 공백을 넣는다면 세번째 인자인 `addSpace`를 생략하면 된다.
 
 ```js
 const prettyBytes = (num, precision = 3, addSpace = true) => {
