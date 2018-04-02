@@ -3708,9 +3708,9 @@ smoothScroll('.fooBar'); // scrolls smoothly to the first element with a class o
 
 ### toggleClass
 
-Toggle a class for an element.
+엘리먼트의 한 클래스를 토글합니다.
 
-Use `element.classList.toggle()` to toggle the specified class for the element.
+엘리먼트의 특정 클래스를 토글하기 위해서 `element.classList.toggle()`를 사용합니다.
 
 ```js
 const toggleClass = (el, className) => el.classList.toggle(className);
@@ -3730,9 +3730,10 @@ toggleClass(document.querySelector('p.special'), 'special'); // The paragraph wi
 
 ### UUIDGeneratorBrowser
 
-Generates a UUID in a browser.
+브라우저에서 UUID를 생성합니다.
 
-Use `crypto` API to generate a UUID, compliant with [RFC4122](https://www.ietf.org/rfc/rfc4122.txt) version 4.
+UUID를 생성하기 위해서 `crypto` API를 사용합니다.  
+이것은 [RFC4122](https://www.ietf.org/rfc/rfc4122.txt) version 4를 따릅니다.
 
 ```js
 const UUIDGeneratorBrowser = () =>
@@ -3818,9 +3819,9 @@ getColonTimeFromDate(new Date()); // "08:38:00"
 
 ### getDaysDiffBetweenDates
 
-Returns the difference (in days) between two dates.
+두 날짜 사이의 차이를 일 기준으로 리턴합니다.
 
-Calculate the difference (in days) between two `Date` objects.
+두 `Date` 오브젝트 사이의 차이를 계산합니다.
 
 ```js
 const getDaysDiffBetweenDates = (dateInitial, dateFinal) =>
@@ -3995,9 +3996,10 @@ console.log(freddyBound('hi', '!')); // 'hi fred!'
 
 ### chainAsync
 
-Chains asynchronous functions.
+비동기 함수들을 연결(chain)합니다.  
+(비동기 함수들을 동기식으로 실행해줍니다.)
 
-Loop through an array of functions containing asynchronous events, calling `next` when each asynchronous event has completed.
+비동기 이벤트가 포함된 함수들의 배열 반복하면서 각각의 비동기 이벤트가 완료되었을 때 `next`를 호출합니다.
 
 ```js
 const chainAsync = fns => {
@@ -5638,9 +5640,9 @@ console.log(colorize(colorize('foo').yellow, colorize('foo').green).bgWhite); //
 
 ### hasFlags
 
-Check if the current process's arguments contain the specified flags.
+현재 프로세스의 인자가 특별한 플래그를 포함하고 있는지 체크합니다.
 
-Use `Array.every()` and `Array.includes()` to check if `process.argv` contains all the specified flags.
+`process.argv`가 모든 플래그들을 포함하고 있는지 체크하기 위해서 `Array.every()` 와 `Array.includes()`를 사용합니다.  
 Use a regular expression to test if the specified flags are prefixed with `-` or `--` and prefix them accordingly.
 
 ```js
@@ -8288,11 +8290,13 @@ isBrowser(); // false (Node)
 
 ### mostPerformant
 
-Returns the index of the function in an array of functions which executed the fastest.
+함수의 배열 중에서 가장 빠르게 실행된 함수의 인덱스를 리턴합니다.
 
-Use `Array.map()` to generate an array where each value is the total time taken to execute the function after `iterations` times. Use the difference in `performance.now()` values before and after to get the total time in milliseconds to a high degree of accuracy.
-Use `Math.min()` to find the minimum execution time, and return the index of that shortest time which corresponds to the index of the most performant function.
-Omit the second argument, `iterations`, to use a default of 10,000 iterations. The more iterations, the more reliable the result but the longer it will take.
+`Array.map()`을 사용하여 배열을 생성합니다. 배열의 각 값은 함수를 `iterations`번 실행한 후의 총 실행 시간입니다.  
+고도의 정확도를 가진 밀리세컨드의 총 실행 시간을 얻기 위해서 실행 전과 후의 `performance.now()`의 값의 차이를 사용합니다.  
+`Math.min()`는 최소 실행 시간을 찾기위해 사용됩니다. 그리고 가장 성능이 좋은 함수의 인덱스와 일치하는 가장 짧은 시간의 인덱스를 리턴합니다.  
+세번째 인자인 `iterations`를 생략하면 10000의 값이 디폴트로 사용됩니다.  
+더 많은 반복 횟수일수록, 더 신뢰할 수 있는 결과이지만 더 오래 걸릴 것입니다.
 
 ```js
 const mostPerformant = (fns, iterations = 10000) => {
