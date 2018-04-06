@@ -833,11 +833,13 @@ any([0, 0, 1, 0]); // true
 <br>[⬆ Back to top](#table-of-contents)
 
 
-### bifurcate
+### bifurcate (분기시키다)
 
-Splits values into two groups. If an element in `filter` is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
+값들을 두 그룹으로 나눕니다.  
+만약 `filter`의 엘리먼트가 `true`라면, collection의 엘리먼트는 첫번째 그룹에 속하고, 그렇지않다면 두번째 그룹에 속합니다.
 
 Use `Array.reduce()` and `Array.push()` to add elements to groups, based on `filter`.
+`filter`를 기준으로 그룹에 엘리먼트들을 추가하기 위해서 `Array.reduce()` 와 `Array.push()`를 사용합니다.
 
 ```js
 const bifurcate = (arr, filter) =>
@@ -858,9 +860,11 @@ bifurcate(['beep', 'boop', 'foo', 'bar'], [true, true, false, true]); // [ ['bee
 
 ### bifurcateBy
 
-Splits values into two groups according to a predicate function, which specifies which group an element in the input collection belongs to. If the predicate function returns a truthy value, the collection element belongs to the first group; otherwise, it belongs to the second group.
+predicate 함수에 따라 값들을 두 그룹으로 나눕니다.  
+만약 predicate 함수가 `true`를 반환하면, collection의 엘리먼트는 첫번재 그룹에 속하고 그렇지않다면 두번째 그룹에 속한다.
 
-Use `Array.reduce()` and `Array.push()` to add elements to groups, based on the value returned by `fn` for each element.
+각 엘리먼트들이 `fn`에 의해 리턴된 값에 기반하여 두개의 그룹으로 나눕니다.  
+두개의 그룹으로 나누기 위해 `Array.reduce()` 와 `Array.push()`를 사용합니다.
 
 ```js
 const bifurcateBy = (arr, fn) =>
