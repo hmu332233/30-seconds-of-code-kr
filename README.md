@@ -1181,9 +1181,9 @@ dropWhile([1, 2, 3, 4], n => n >= 3); // [3,4]
 
 ### everyNth
 
-Returns every nth element in an array.
+배열에서 매 n번째 엘리먼트들을 리턴한다.
 
-Use `Array.filter()` to create a new array that contains every nth element of a given array.
+주어진 배열의 n번째 엘리먼트를 포함하는 새로운 배열을 만들기 위해서 `Array.filter()`를 사용한다.
 
 ```js
 const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
@@ -1203,9 +1203,9 @@ everyNth([1, 2, 3, 4, 5, 6], 2); // [ 2, 4, 6 ]
 
 ### filterNonUnique
 
-Filters out the non-unique values in an array.
+배열에서 유일하지 않은 값을 걸러낸다.
 
-Use `Array.filter()` for an array containing only the unique values.
+유일한 값만 남기기 위해서 `Array.filter()`를 사용한다.
 
 ```js
 const filterNonUnique = arr => arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
@@ -1225,9 +1225,10 @@ filterNonUnique([1, 2, 2, 3, 4, 4, 5]); // [1,3,5]
 
 ### findLast
 
-Returns the last element for which the provided function returns a truthy value.
+주어진 함수가 `true`를 반환하는 엘리먼트들 중 마지막 엘리먼트를 리턴합니다.
 
-Use `Array.filter()` to remove elements for which `fn` returns falsey values, `Array.slice(-1)` to get the last one.
+`fn`이 `false`를 리턴하는 엘리먼트를 제거하기 위해 `Array.filter()`를 사용하고,  
+마지막 엘리먼트를 얻기 위해 `Array.slice(-1)`를 사용합니다.
 
 ```js
 const findLast = (arr, fn) => arr.filter(fn).slice(-1)[0];
@@ -1301,9 +1302,10 @@ flatten([1, [2, [3, [4, 5], 6], 7], 8], 2); // [1, 2, 3, [4, 5], 6, 7, 8]
 
 ### forEachRight
 
-Executes a provided function once for each array element, starting from the array's last element.
+배열의 마지막 엘리먼트부터 시작해서, 주어진 함수를 각 한번씩 실행합니다.
 
-Use `Array.slice(0)` to clone the given array, `Array.reverse()` to reverse it and `Array.forEach()` to iterate over the reversed array.
+주어진 배열을 복사하기 위해서 `Array.slice(0)`를 사용하고, `Array.reverse()`로 이것을 뒤집습니다.  
+그리고 `Array.forEach()`로 뒤집어진 배열을 반복합니다.
 
 ```js
 const forEachRight = (arr, callback) =>
@@ -1327,9 +1329,10 @@ forEachRight([1, 2, 3, 4], val => console.log(val)); // '4', '3', '2', '1'
 
 ### groupBy
 
-Groups the elements of an array based on the given function.
+주어진 함수를 기반으로 배열의 엘리먼트들을 그룹 짓습니다.
 
-Use `Array.map()` to map the values of an array to a function or property name.
+함수 또는 프로퍼티 이름으로 배열의 값들을 맵핑하기 위해 `Array.map()`를 사용합니다.  
+맵핑된 결과값으로부터 키를 만드는 object를 만들기 위해서 `Array.reduce()`를 사용합니다.  
 Use `Array.reduce()` to create an object, where the keys are produced from the mapped results.
 
 ```js
@@ -1377,10 +1380,10 @@ head([1, 2, 3]); // 1
 
 ### indexOfAll
 
-Returns all indices of `val` in an array. If `val` never occurs, returns `[]`.
+배열 안에 `val`의 모든 index들을 리턴합니다.  
+만약 `val`가 없는 경우 `[]`를 리턴합니다.
 
-Use `Array.forEach()` to loop over elements and `Array.push()` to store indices for matching elements.
-Return the array of indices.
+엘리먼트들을 돌기위해 `Array.forEach()`를 사용하고, 매칭된 index들을 저장하기 위해 `Array.push()`를 사용합니다.  
 
 ```js
 const indexOfAll = (arr, val) => {
@@ -1405,9 +1408,9 @@ indexOfAll([1, 2, 3], 4); // []
 
 ### initial
 
-Returns all the elements of an array except the last one.
+마지막 하나를 제외한 배열의 모든 엘리먼트들을 리턴합니다.
 
-Use `arr.slice(0,-1)` to return all but the last element of the array.
+배열의 마지막 엘리먼트를 제외하고 리턴하기 위해서 `arr.slice(0,-1)`를 사용합니다.
 
 ```js
 const initial = arr => arr.slice(0, -1);
@@ -1427,7 +1430,7 @@ initial([1, 2, 3]); // [1,2]
 
 ### initialize2DArray
 
-Initializes a 2D array of given width and height and value.
+`width`와 `height`와 `value`를 받아 초기화된 2차원 배열을 리턴합니다.
 
 Use `Array.map()` to generate h rows where each is a new array of size w initialize with value. If the value is not provided, default to `null`.
 
@@ -1506,10 +1509,10 @@ initializeArrayWithRangeRight(9, 0, 2); // [8,6,4,2,0]
 
 ### initializeArrayWithValues
 
-Initializes and fills an array with the specified values.
+배열을 만들고 특정 값으로 초기화합니다.
 
-Use `Array(n)` to create an array of the desired length, `fill(v)` to fill it with the desired values.
-You can omit `val` to use a default value of `0`.
+원하는 길이의 배열을 만들기 위해서 `Array(n)`를 사용하고, 원하는 값으로 배열을 체우기 위해 `fill(v)`를 사용합니다.  
+`val` 인자는 생략가능하고, 그럴 경우 default 값인 `0`이 사용됩니다.
 
 ```js
 const initializeArrayWithValues = (n, val = 0) => Array(n).fill(val);
@@ -1529,9 +1532,9 @@ initializeArrayWithValues(5, 2); // [2,2,2,2,2]
 
 ### intersection
 
-Returns a list of elements that exist in both arrays.
+두 배열에서 겹치는 엘리먼트들의 리스트를 리턴합니다.
 
-Create a `Set` from `b`, then use `Array.filter()` on `a` to only keep values contained in `b`.
+`b`로부터 `Set`을 만듭니다. 그런다음 `a`로 `Array.filter()`를 사용하여 `b`에 포함된 값만 유지합니다.
 
 ```js
 const intersection = (a, b) => {
