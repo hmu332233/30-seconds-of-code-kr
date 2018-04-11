@@ -1604,7 +1604,8 @@ intersectionWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0, 3.9], (a, b) => Math.round(a) 
 
 ### isSorted
 
-Returns `1` if the array is sorted in ascending order, `-1` if it is sorted in descending order or `0` if it is not sorted.
+배열이 오름차순으로 정렬되어 있으면 `1`을 리턴하고, 내림차순으로 정렬되어 있으면 `-1`을 리턴한다.  
+정렬되어있지 않다면 `0`을 리턴한다.
 
 Calculate the ordering `direction` for the first two elements.
 Use `Object.entries()` to loop over array objects and compare them in pairs.
@@ -1842,10 +1843,10 @@ nthElement(['a', 'b', 'b'], -3); // 'a'
 
 ### partition
 
-Groups the elements into two arrays, depending on the provided function's truthiness for each element.
+각 엘리먼트에 대해 함수가 `true`를 리턴하는 것 기준으로 엘리먼트를 두 그룹으로 나눕니다.
 
-Use `Array.reduce()` to create an array of two arrays.
-Use `Array.push()` to add elements for which `fn` returns `true` to the first array and elements for which `fn` returns `false` to the second one.
+두 배열을 만들기 위해 `Array.reduce()`을 사용합니다.  
+`fn`이 `true`를 리턴하는 엘리먼트를 첫번째 배열에 추가하고 `false`를 리턴하는 엘리먼트를 두번째 배열에 추가하기 위해서 `Array.push()`를 사용합니다.
 
 ```js
 const partition = (arr, fn) =>
@@ -2039,10 +2040,11 @@ pullBy(myArray, [{ x: 1 }, { x: 3 }], o => o.x); // myArray = [{ x: 2 }]
 
 ### reducedFilter
 
-Filter an array of objects based on a condition while also filtering out unspecified keys.
+오브젝트의 배열을 조건에 의해 필터링합니다.  
+또한 지정하지 않은 키에 대해서도 필터링합니다.
 
-Use `Array.filter()` to filter the array based on the predicate `fn` so that it returns the objects for which the condition returned a truthy value.
-On the filtered array, use `Array.map()` to return the new object using `Array.reduce()` to filter out the keys which were not supplied as the `keys` argument.
+`fn`에 기초해서 배열을 필터링하기 위해 `Array.filter()`를 사용합니다.  
+필터링된 배열에서 `Array.map()`을 사용하여 새로운 오브젝트를 리턴하고 `Array.reduce()`를 사용해서 `keys` 인자에 들어있지 않은 키들을 필터링합니다.
 
 ```js
 const reducedFilter = (data, keys, fn) =>
@@ -2162,10 +2164,11 @@ remove([1, 2, 3, 4], n => n % 2 === 0); // [2, 4]
 
 ### sample
 
-Returns a random element from an array.
+배열 중 랜덤하게 엘리먼트를 리턴합니다.
 
-Use `Math.random()` to generate a random number, multiply it by `length` and round it of to the nearest whole number using `Math.floor()`.
-This method also works with strings.
+`Math.random()`를 사용하여 랜덤한 숫자를 만들고   
+`length`를 곱한 후 `Math.floor()`를 사용하여 가장 가까운 정수로 만듭니다.  
+이 메소드는 `strings`에서도 동작합니다.
 
 ```js
 const sample = arr => arr[Math.floor(Math.random() * arr.length)];
@@ -2247,9 +2250,10 @@ shuffle(foo); // [2,3,1], foo = [1,2,3]
 
 ### similarity
 
-Returns an array of elements that appear in both arrays.
+두 배열에 공통적으로 들어있는 엘리먼트들 리턴합니다.
 
-Use `Array.filter()` to remove values that are not part of `values`, determined using `Array.includes()`.
+`Array.filter()`를 사용하여 `values`에 있는 값이 아닌 것들을 제거합니다.  
+`values`에 있는 값이 아닌 것을 판별하기 위해 `Array.includes()`를 사용합니다.
 
 ```js
 const similarity = (arr, values) => arr.filter(v => values.includes(v));
