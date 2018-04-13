@@ -3006,12 +3006,12 @@ copyToClipboard('Lorem ipsum'); // 'Lorem ipsum' copied to clipboard.
 
 ### createElement
 
-Creates an element from a string (without appending it to the document).
-If the given string contains multiple elements, only the first one will be returned.
+문자열로부터 엘리먼트를 만듭니다.(document에 추가하지 않고)  
+만약 인자로 받은 문자열이 여러개의 엘리먼트를 포함하고 있다면, 오직 첫번째 엘리먼트만 리턴됩니다.
 
-Use `document.createElement()` to create a new element.
-Set its `innerHTML` to the string supplied as the argument.
-Use `ParentNode.firstElementChild` to return the element version of the string.
+새로운 엘리먼트를 만들기 위해 `document.createElement()`를 사용합니다.  
+이것의 `innerHTML`에 인자로 받은 문자열을 셋팅합니다.  
+`ParentNode.firstElementChild`를 사용해 문자열의 엘리먼트 버전을 리턴합니다.
 
 ```js
 const createElement = str => {
@@ -3040,13 +3040,12 @@ console.log(el.className); // 'container'
 
 ### createEventHub ![advanced](/advanced.svg)
 
-Creates a pub/sub ([publish–subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)) event hub with `emit`, `on`, and `off` methods.
+`emit`, `on`, `off`를 가진 pub/sub([publish–subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)) 이벤트 허브를 만듭니다.
 
-Use `Object.create(null)` to create an empty `hub` object that does not inherit properties from `Object.prototype`.
-For `emit`, resolve the array of handlers based on the `event` argument and then run each one with `Array.forEach()` by passing in the data as an argument.
-For `on`, create an array for the event if it does not yet exist, then use `Array.push()` to add the handler
-to the array.
-For `off`, use `Array.findIndex()` to find the index of the handler in the event array and remove it using `Array.splice()`.
+`Object.create(null)`를 사용해서 `Object.prototype`를 상속받지 않은 빈 `hub` 오브젝트를 만듭니다.  
+`emit`의 경우, `event` 파라미터에 기반한 헨들러들의 배열을 resolve합니다. 그리고 `Array.forEach()`로 각각에 데이터를 넣어주면서 실행합니다.  
+`on`의 경우, 이 이벤트가 아직 존재하지 않으면 이벤트를 위한 배열을 만듭니다. 이벤트가 존재한다면 헨들러를 추가하기 위해 `Array.push()`를 사용합니다.  
+`off`의 경우, `Array.findIndex()`를 사용하여 이벤트 배열 내의 헨들러의 인덱스를 찾아냅니다. 그리고 `Array.splice()`를 이용해 삭제합니다.
 
 ```js
 const createEventHub = () => ({
